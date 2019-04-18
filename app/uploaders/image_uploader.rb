@@ -1,4 +1,5 @@
 class ImageUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick #画像サイズが調整できるようになる
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -7,6 +8,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :file #保存形式の設定。他に使うものとしてはfog形式などがある
   # storage :fog
 
+  process :resize_to_limit => [50, 50] # 画像サイズの調整
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir #画像ファイルの保存先の設定

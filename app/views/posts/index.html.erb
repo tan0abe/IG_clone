@@ -1,5 +1,9 @@
 <%= @posts.each do |post| %>
-  <p><%= post.title %></p>
-  <p><%= post.content %></p>
-  <p><%= image_tag post.image_path.url %></p>
+  <div>
+    <ul>
+      <li><%= "タイトル：#{post.title}"%></li>
+      <li><%= "コメント：#{post.content}"%></li>
+      <li><%= image_tag(post.image_path.url) %></li>
+    </ul>
+  </div>
 <% end %>
