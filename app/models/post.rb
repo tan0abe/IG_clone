@@ -4,5 +4,5 @@ class Post < ApplicationRecord
   validates :content, length: { minimum: 1 }
   validates :content, length: { maximum: 140 }
 
-  mount_uploader :image, ImageUploader #postsテーブルの中にあるimageカラムにImageUploaderという名前のアップローダ機能を追加
+  mount_uploader :image_path, ImageUploader #postsテーブルの中にあるimageカラムにImageUploaderという名前のアップローダ機能を追加
 end
