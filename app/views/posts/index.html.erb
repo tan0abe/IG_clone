@@ -4,6 +4,7 @@
       <li><%= "タイトル：#{post.title}"%></li>
       <li><%= "コメント：#{post.content}"%></li>
       <li><%= image_tag(post.image_path.url) %></li>
+      <%= link_to "ついーとを編集する", edit_post_path(post.id) %>
     </ul>
   </div>
 <% end %>
