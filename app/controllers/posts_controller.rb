@@ -24,6 +24,10 @@ class PostsController < ApplicationController
 
   end
 
+  def confirm
+    @post = Post.new(post_params)
+  end
+
   def update
     if @post.update(post_params)
       flash[:notice] = "更新しました"
@@ -42,7 +46,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :image_path, :image_cache) #image_cacheは画像のデータそのものを取り扱うパラメータで、確認画面の実装を挟む時などに使用する
+    params.require(:post).permit(:title, :content, :image_path, :image_path_cache) #image_cacheは画像のデータそのものを取り扱うパラメータで、確認画面の実装を挟む時などに使用する
   end
 
   def set_post
