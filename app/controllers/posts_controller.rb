@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:notice] = "投稿しました"
       redirect_to posts_path
@@ -25,7 +25,8 @@ class PostsController < ApplicationController
   end
 
   def confirm
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
+    render 'new' if @post.invalid?
   end
 
   def update
@@ -46,7 +47,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :image_path, :image_path_cache) #image_cacheは画像のデータそのものを取り扱うパラメータで、確認画面の実装を挟む時などに使用する
+    params.require(:post).permit(:title, :content, :image_path, :image_path_cache, :user_id) #image_cacheは画像のデータそのものを取り扱うパラメータで、確認画面の実装を挟む時などに使用する
   end
 
   def set_post

@@ -3,6 +3,7 @@
 <%= @posts.each do |post| %>
   <div>
     <ul>
+      <li><%= "ユーザー名：#{post.user.name}" %></li>
       <li><%= "タイトル：#{post.title}"%></li>
       <li><%= "コメント：#{post.content}"%></li>
       <li><%= image_tag(post.image_path.url) %></li>
