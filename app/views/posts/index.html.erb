@@ -1,6 +1,4 @@
-<%= link_to "新しく投稿する", new_post_path %>
-
-<%= @posts.each do |post| %>
+<% @posts.each do |post| %>
   <div>
     <ul>
       <li><%= "ユーザー名：#{post.user.name}" %></li>
