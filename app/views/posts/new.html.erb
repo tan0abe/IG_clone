@@ -1,11 +1,11 @@
 <%= form_with(model: @post, local: true, url: confirm_posts_path) do |f| %>
-  <%= f.label :title %>
+  <%= f.label :タイトル %>
   <%= f.text_field :title %>
 
-  <%= f.label :content %>
+  <%= f.label :コメント %>
   <%= f.text_field :content %>
 
-  <%= f.label :image_path %>
+  <%= f.label :画像 %>
   <%= f.file_field :image_path %>
 
   <%= f.submit "投稿する" %>
