@@ -5,8 +5,10 @@
   <%= f.label :コメント %>
   <%= f.text_field :content %>
 
+  <div class="image">
   <%= f.label :画像 %>
   <%= f.file_field :image_path %>
+  </div>
 
-  <%= f.submit "投稿する" %>
+  <%= f.submit "投稿する", class: 'btn btn-danger' %>
 <% end %>

@@ -14,50 +14,51 @@
  *= require_tree .
  *= require_self
  */
- html, body {
-  background: linear-gradient(-90deg, #E9566B, #F4EFBB);
+html,
+body {
+  background: linear-gradient(-90deg, #e9566b, #f4efbb);
   text-align: center;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  padding:0;
+  padding: 0;
   height: 100%;
   margin-right: auto;
-  margin-left : auto;
+  margin-left: auto;
 }
 
 header {
- background-color: #262626;
- height: 50px;
- font-size: 1.2rem;
+  background-color: #262626;
+  height: 70px;
+  font-size: 1.2rem;
 }
 
-footer{
- background-color:#262626;
- width: 100%;
- color: #fff;
- text-align: center;
- height: 100px;
- position: absolute;/*←絶対位置*/
- bottom: 0; /*下に固定*/
+footer {
+  background-color: #262626;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  height: 100px;
+  position: absolute; /*←絶対位置*/
+  bottom: 0; /*下に固定*/
 }
 
 .top_menu li {
- float: left;
- padding: 15px;
- text-decoration: none;
+  float: left;
+  padding: 15px;
+  text-decoration: none;
 }
 
 .clearfix:after {
- content: "";
- display: block;
- clear: both;
+  content: "";
+  display: block;
+  clear: both;
 }
 
-.wrapper{
- min-height: 100vh;
- position: relative;
- padding-bottom: 120px;/*←footerの高さ*/
- box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px; /*←footerの高さ*/
+  box-sizing: border-box; /*←全て含めてmin-height:100vhに*/
 }

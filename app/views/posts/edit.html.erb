@@ -7,8 +7,10 @@
     <%= f.label :content %>
     <%= f.text_field :content %>
 
+    <div class="image">
     <%= f.label :画像 %>
     <%= f.file_field :image_path %>
+    </div>
 
     <strong>画像:</strong>
     <%= image_tag @post.image_path.url %>
