@@ -12,6 +12,11 @@
 <% end %>
 
 <%= form_with(model: @user, local: true) do |f| %>
+  <div class="image">
+  <%= f.label :プロフィール画像 %>
+  <%= f.file_field :image_path %>
+  </div>
+
   <%= f.label :名前 %>
   <%= f.text_field :name %>
 
