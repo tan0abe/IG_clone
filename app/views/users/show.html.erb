@@ -5,3 +5,5 @@
 </ul>
 
 <p>メールアドレス: <%= @user.email %></p>
+
+<h4><%= link_to "プロフィールを編集する", "/users/#{@user.id}/edit" %></h4>

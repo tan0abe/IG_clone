@@ -1,0 +1,36 @@
+<h2>プロフィール編集</h2>
+&nbsp
+<%= form_with(model: @user, local: true) do |f| %>
+  <div class="border col-12">
+    <div class="row">
+      <div class="col-md-12 col-xs-12">
+        <div class="form-group">
+          <%= f.label :name, "お名前" %>
+          <%= f.text_field :name, class:"form-control" ,placeholder: "山田 花子" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, class:"form-control" ,placeholder: "test@example.com" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :image_path, "あなたのイメージ画像" %>
+          <%= image_tag(@user.image_path.url) if @user.image_path && @user.image_path.url %>
+          <p class="edit_image">プロフィール画像の変更</p>
+          <%= f.file_field :image_path, class:"form-control" %>
+          <%= f.hidden_field :image_path_cache %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password, "ご自身パスワード" %>
+          <%= f.password_field :password, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password, "もう一度パスワードを入力してください" %>
+          <%= f.password_field :password, class:"form-control" %>
+        </div>
+        <div class="form-group edit-submit">
+          <%= f.submit "更新" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
