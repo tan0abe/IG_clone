@@ -20,16 +20,24 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    unless current_user.id == @user.id
+      flash[:danger] = "他人のプロフィールは編集できません"
+      redirect_to new_session_path
+    end
   end
 
   def update
-    if @user.update(user_params)
-      flash[:notice] = "更新しました"
-      redirect_to posts_path
+    if current_user.id == @user.id
+      if @user.update(user_params)
+        flash[:notice] = "更新しました"
+        redirect_to posts_path
+      else
+        flash[:danger] = "更新できませんでした"
+        render 'edit'
+      end
     else
-      flash[:danger] = "更新できませんでした"
-      render 'edit'
+      flash[:danger] = "他人のプロフィールは編集できません！"
+      redirect_to new_session_path
     end
   end
 
