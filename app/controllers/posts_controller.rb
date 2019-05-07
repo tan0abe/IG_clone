@@ -64,9 +64,11 @@ class PostsController < ApplicationController
   end
 
    def correct_user
-    unless current_user.id == @post.user_id
-      flash[:danger] = "他の人の投稿は編集できません！"
-      redirect_to new_session_path
+    if current_user.present? #ログインしていない時は、current_user.idを確かめないので、current_userがnilというエラーにならない
+      unless current_user.id == @post.user_id
+        flash[:danger] = "他の人の投稿は編集できません！"
+        redirect_to posts_path
+      end
     end
   end
 end
