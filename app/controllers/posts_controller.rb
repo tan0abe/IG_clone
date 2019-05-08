@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
+      ContactMailer.contact_mail(@post).deliver
       flash[:notice] = "投稿しました"
       redirect_to posts_path
     else
