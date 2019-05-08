@@ -9,5 +9,5 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
-  mount_uploader :image_path, ImageUploader #usersテーブルの中にあるpictureカラムにImageUploaderという名前のアップローダ機能を追加
+  mount_uploader :user_image, ImageUploader #usersテーブルの中にあるpictureカラムにImageUploaderという名前のアップローダ機能を追加
 end

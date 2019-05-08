@@ -13,11 +13,11 @@
           <%= f.email_field :email, class:"form-control" ,placeholder: "test@example.com" %>
         </div>
         <div class="form-group">
-          <%= f.label :image_path, "あなたのイメージ画像" %>
-          <%= image_tag(@user.image_path.url) if @user.image_path && @user.image_path.url %>
+          <%= f.label :user_image, "あなたのイメージ画像" %>
+          <%= image_tag(@user.user_image.url) if @user.user_image && @user.user_image.url %>
           <p class="edit_image">プロフィール画像の変更</p>
-          <%= f.file_field :image_path, class:"form-control" %>
-          <%= f.hidden_field :image_path_cache %>
+          <%= f.file_field :user_image, class:"form-control" %>
+          <%= f.hidden_field :user_image_cache %>
         </div>
         <div class="form-group">
           <%= f.label :password, "ご自身パスワード" %>
