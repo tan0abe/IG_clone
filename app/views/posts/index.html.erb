@@ -5,8 +5,12 @@
       <li><%= "タイトル：#{post.title}"%></li>
       <li><%= "コメント：#{post.content}"%></li>
       <li><%=  link_to image_tag(post.image_path.url), post_path(post.id) %></li>
-      <%= link_to "投稿を編集する", edit_post_path(post.id), class: 'btn btn-success' %>
-      <%= link_to "投稿を削除する", post_path(post.id), method: :delete, data: {confirm: "削除していいですか？" }, class: 'btn btn-danger' %>
+      <% if current_user.present? %>
+        <% if current_user.id == post.user_id %>
+          <%= link_to "投稿を編集する", edit_post_path(post.id), class: 'btn btn-success' %>
+          <%= link_to "投稿を削除する", post_path(post.id), method: :delete, data: {confirm: "削除していいですか？" }, class: 'btn btn-danger' %>
+        <% end %>
+      <% end %>
     </ul>
   </div>
 <% end %>

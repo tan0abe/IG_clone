@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def confirm
     @post = current_user.posts.build(post_params)
-    render 'new' if @post.invalid? flash.now[:danger] = "すべて入力しないと投稿できませんT_T"
+    render 'new' if @post.invalid?
   end
 
   def update

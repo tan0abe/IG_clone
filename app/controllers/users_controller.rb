@@ -19,9 +19,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    unless current_user.id == @user.id
-      flash[:danger] = "他人のプロフィールは編集できません"
-      redirect_to new_session_path
+    if current_user.present? #ログインしていない時は、current_user.idを確かめないので、current_userがnilというエラーにならない
+      unless current_user.id == @user.id
+        flash[:danger] = "他人のプロフィールは編集できません"
+        redirect_to new_session_path
+      end
     end
   end
 
