@@ -7,12 +7,13 @@
     <li><%= image_tag(@post.image_path.url) %></li>
   </ul>
 </div>
-
-<% unless @post.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入りを解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%# どのブログをお気に入りするのか？ という情報を送るために、(post_id: @post.id)の記述を追記している %>
-    <%= link_to 'お気に入りをする', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+<% if current_user.present? %>
+  <% unless @post.user_id == current_user.id %>
+    <% if @favorite.present? %>
+      <%= link_to 'お気に入りを解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+    <% else %>
+      <%# どのブログをお気に入りするのか？ という情報を送るために、(post_id: @post.id)の記述を追記している %>
+      <%= link_to 'お気に入りをする', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+    <% end %>
   <% end %>
 <% end %>

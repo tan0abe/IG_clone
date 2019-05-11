@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :likes]
 
   def new
     @user = User.new
@@ -16,13 +16,19 @@ class UsersController < ApplicationController
   end
 
   def show
+    if current_user.present? #ログインしていない時は、current_user.idを確かめないので、current_userがnilというエラーにならない
+      unless current_user.id == @user.id
+        flash[:danger] = "他人のプロフィールは見ることができません！"
+        redirect_to posts_path
+      end
+    end
   end
 
   def edit
     if current_user.present? #ログインしていない時は、current_user.idを確かめないので、current_userがnilというエラーにならない
       unless current_user.id == @user.id
-        flash[:danger] = "他人のプロフィールは編集できません"
-        redirect_to new_session_path
+        flash[:danger] = "他人のプロフィールは編集できません！"
+        redirect_to posts_path
       end
     end
   end
@@ -40,6 +46,10 @@ class UsersController < ApplicationController
       flash[:danger] = "他人のプロフィールは編集できません！"
       redirect_to new_session_path
     end
+  end
+
+  def likes
+    @favorites = @user.favorites
   end
 
   private
