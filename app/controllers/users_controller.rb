@@ -32,7 +32,7 @@ class UsersController < ApplicationController
         flash[:notice] = "更新しました"
         redirect_to posts_path
       else
-        flash[:danger] = "更新できませんでした"
+        flash.now[:danger] = "更新できませんでした"
         render 'edit'
       end
     else

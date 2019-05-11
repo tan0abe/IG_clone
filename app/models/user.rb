@@ -8,6 +8,7 @@ class User < ApplicationRecord
                     before_validation { email.downcase! }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+  validates :user_image, presence: true
 
   mount_uploader :user_image, ImageUploader #usersテーブルの中にあるpictureカラムにImageUploaderという名前のアップローダ機能を追加
 end
